@@ -1,23 +1,32 @@
 // Typography
 
-$fontFamily:'Manrope';
+$fontFamily: "Josefin Sans";
 $body: 600;
 $heading: 800;
-
 
 // Colors
 
 // Primary
 
-$Red: hsl(1, 90%, 64%);
-$Blue: hsl(219, 85%, 26%);
+$brightBlue: hsl(220, 98%, 61%);
+$checkBackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
-// Neutral
+//  Neutral
 
-$White: hsl(0, 0%, 100%); 
-$Very-light-grayish-blue: hsl(210, 60%, 98%);
-$Light-grayish-blue-1: hsl(211, 68%, 94%);
-$Light-grayish-blue-2: hsl(205, 33%, 90%);
-$Grayish-blue: hsl(219, 14%, 63%);
-$Dark-grayish-blue: hsl(219, 12%, 42%);
-$Very-dark-blue: hsl(224, 21%, 14%);
+//  Light Theme
+
+$veryLightGray: hsl(0, 0%, 98%);
+$veryLightGrayishBlue: hsl(240, 2%, 82%);
+$lightGrayishBlue: hsl(252, 3%, 69%);
+$darkGrayishBlue: hsl(236, 9%, 61%);
+$veryDarkGrayishBlue: hsl(235, 19%, 35%);
+
+// Dark Theme
+
+$very-dark-blue: hsl(235, 21%, 11%);
+$very-dark-desaturated-blue: hsl(235, 24%, 19%);
+$light-grayish-blue-dark: hsl(234, 39%, 85%);
+$light-grayish-blue-hover: hsl(236, 33%, 92%);
+$dark-grayish-blue-dark: hsl(234, 11%, 52%);
+$very-dark-grayish-blue-dark: hsl(233, 14%, 35%);
+$very-dark-grayish-blue-alt: hsl(237, 14%, 26%);
