@@ -1,1 +1,1 @@
-console.log("Chibuike");
+const textInput = document.getElementById(".text-input");

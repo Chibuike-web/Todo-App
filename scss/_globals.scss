@@ -8,4 +8,70 @@ body {
 	font-family: $fontFamily;
 	font-weight: $body;
 	background-color: $veryLightGray;
+	height: 100vh;
+	background-image: url("../assets/images/bg-desktop-light.jpg");
+	background-repeat: no-repeat;
+	justify-items: center;
+	background-position: center top;
+}
+
+main {
+	width: 100%;
+	max-width: 33.75rem;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	margin-block-start: 4.6875rem;
+	color: white;
+
+	.header-content {
+		display: flex;
+		justify-content: space-between;
+		margin-block-end: 2.1875rem;
+	}
+
+	.input-content {
+		position: relative;
+		padding-block: 1.5rem;
+		background-color: white;
+		border-radius: 4px;
+		padding-inline: 72px 20px;
+
+		#checkbox {
+			-webkit-appearance: none;
+			appearance: none;
+			border-radius: 50%;
+			border: 1px solid $veryLightGrayishBlue;
+			position: absolute;
+			width: 26px;
+			height: 26px;
+			top: 50%;
+			cursor: pointer;
+			transform: translateY(-50%);
+			left: 20px;
+
+			&:checked {
+				background: $checkBackground;
+				border: none;
+			}
+		}
+
+		#text-input {
+			outline: none;
+			border: none;
+			font-size: 18px;
+			width: 100%;
+			color: $veryDarkGrayishBlue;
+			font-family: $fontFamily;
+			font-size: 18px;
+		}
+
+		#text-input::placeholder {
+			color: $darkGrayishBlue;
+			font-family: $fontFamily;
+			font-size: 18px;
+		}
+	}
 }
