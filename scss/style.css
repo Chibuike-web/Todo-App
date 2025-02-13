@@ -9,7 +9,7 @@ body {
   font-weight: 600;
   background-color: hsl(0, 0%, 98%);
   height: 100vh;
-  background-image: url("../assets/images/bg-desktop-light.jpg");
+  background-image: url("../assets/bg-desktop-light.jpg");
   background-repeat: no-repeat;
   justify-items: center;
   background-position: center top;
