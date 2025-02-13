@@ -1,7 +1,8 @@
 const textInput = document.getElementById("text-input") as HTMLInputElement;
-const todosContainer = document.getElementById("todos-container");
+const todosContainer = document.getElementById("todos-container") as HTMLElement;
 
 let todoCount = 0;
+let bottomDivRendered = false;
 
 textInput.onkeydown = (e) => {
 	if (e.key === "Enter") {
@@ -21,12 +22,20 @@ textInput.onkeydown = (e) => {
 		checkBox.type = "checkbox";
 		checkBox.className = "checkbox";
 		checkBox.id = uniqueId;
-
 		todoItem.appendChild(checkBox);
 
 		const label = document.createElement("label");
 		label.setAttribute("for", uniqueId);
 		label.textContent = textInput.value;
 		todoItem.appendChild(label);
+
+		if (todosContainer && !bottomDivRendered) {
+			const bottomDiv = document.createElement("div");
+			const paragraph = document.createElement("p");
+			paragraph.textContent = "5 items left";
+			bottomDiv.appendChild(paragraph);
+			todosContainer.insertAdjacentElement("afterend", bottomDiv);
+			bottomDivRendered = true;
+		}
 	}
 };
