@@ -78,11 +78,16 @@ header {
 	}
 }
 
-#todos-container {
-	width: 100%;
+.wrapper {
 	border-radius: 0.25rem;
 	background-color: white;
 	overflow: hidden;
+	box-shadow: 0 24px 64px -24px rgba(72, 75, 106, 0.25);
+	margin-bottom: 48px;
+}
+
+#todos-container {
+	width: 100%;
 	.todo-container {
 		display: flex;
 		align-items: center;
@@ -135,7 +140,7 @@ header {
 
 				&::after {
 					content: "";
-					background-image: url("../assets/images/icon-check.svg");
+					background-image: url("../assets/icon-check.svg");
 					background-repeat: no-repeat;
 					background-size: contain;
 					position: absolute;
@@ -150,4 +155,8 @@ header {
 			}
 		}
 	}
+}
+
+.bottom-row {
+	padding: 20px;
 }

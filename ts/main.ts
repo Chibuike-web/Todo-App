@@ -31,6 +31,7 @@ textInput.onkeydown = (e) => {
 
 		if (todosContainer && !bottomDivRendered) {
 			const bottomDiv = document.createElement("div");
+			bottomDiv.classList.add("bottom-row");
 			const paragraph = document.createElement("p");
 			paragraph.textContent = "5 items left";
 			bottomDiv.appendChild(paragraph);

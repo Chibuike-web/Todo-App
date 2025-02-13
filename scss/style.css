@@ -78,11 +78,16 @@ header .input-content #text-input::placeholder {
   font-size: 1.125rem;
 }
 
-#todos-container {
-  width: 100%;
+.wrapper {
   border-radius: 0.25rem;
   background-color: white;
   overflow: hidden;
+  box-shadow: 0 24px 64px -24px rgba(72, 75, 106, 0.25);
+  margin-bottom: 48px;
+}
+
+#todos-container {
+  width: 100%;
 }
 #todos-container .todo-container {
   display: flex;
@@ -131,7 +136,7 @@ header .input-content #text-input::placeholder {
 }
 #todos-container .todo-container .todo-item .checkbox::after {
   content: "";
-  background-image: url("../assets/images/icon-check.svg");
+  background-image: url("../assets/icon-check.svg");
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -142,4 +147,8 @@ header .input-content #text-input::placeholder {
   transform: translate(-50%, -50%);
   z-index: 100;
   display: none;
+}
+
+.bottom-row {
+  padding: 20px;
 }/*# sourceMappingURL=style.css.map */
