@@ -1,8 +1,8 @@
 const textInput = document.getElementById("text-input") as HTMLInputElement;
 const todosContainer = document.getElementById("todos-container") as HTMLElement;
 
-let todoCount = 0;
-let bottomDivRendered = false;
+let todoCount: number = 0;
+let bottomDivRendered: boolean = false;
 
 textInput.onkeydown = (e) => {
 	if (e.key === "Enter") {
