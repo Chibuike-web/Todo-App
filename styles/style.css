@@ -94,12 +94,17 @@ header .input-content #text-input::placeholder {
   align-items: center;
   padding-block: 1.5rem;
   background-color: white;
+  cursor: pointer;
   display: flex;
   align-items: center;
   padding-inline: 1.25rem;
   justify-content: space-between;
   width: 100%;
   border-bottom: 1px solid hsl(240, 2%, 82%);
+}
+#todos-container .todo-container:hover .cancel-btn {
+  opacity: 1;
+  transform: scale(1);
 }
 #todos-container .todo-container .todo-item {
   display: flex;
@@ -147,6 +152,11 @@ header .input-content #text-input::placeholder {
   transform: translate(-50%, -50%);
   z-index: 100;
   display: none;
+}
+#todos-container .todo-container .cancel-btn {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .bottom-row {

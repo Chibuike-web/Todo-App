@@ -93,13 +93,18 @@ header {
 		align-items: center;
 		padding-block: 1.5rem;
 		background-color: white;
-
+		cursor: pointer;
 		display: flex;
 		align-items: center;
 		padding-inline: 1.25rem;
 		justify-content: space-between;
 		width: 100%;
 		border-bottom: 1px solid $veryLightGrayishBlue;
+
+		&:hover .cancel-btn {
+			opacity: 1;
+			transform: scale(1);
+		}
 
 		.todo-item {
 			display: flex;
@@ -153,6 +158,12 @@ header {
 					display: none;
 				}
 			}
+		}
+
+		.cancel-btn {
+			opacity: 0;
+			transform: scale(0.6);
+			transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 		}
 	}
 }
