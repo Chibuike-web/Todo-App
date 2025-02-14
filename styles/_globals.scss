@@ -4,6 +4,13 @@
 	box-sizing: border-box;
 }
 
+button {
+	outline: none;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
 body {
 	font-family: $fontFamily;
 	font-weight: $body;
@@ -170,4 +177,9 @@ header {
 
 .bottom-row {
 	padding: 20px;
+}
+
+.checked {
+	text-decoration: line-through;
+	color: $veryLightGrayishBlue;
 }

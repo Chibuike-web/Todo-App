@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+button {
+  outline: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 body {
   font-family: "Josefin Sans";
   font-weight: 600;
@@ -161,4 +168,9 @@ header .input-content #text-input::placeholder {
 
 .bottom-row {
   padding: 20px;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: hsl(240, 2%, 82%);
 }/*# sourceMappingURL=style.css.map */

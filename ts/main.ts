@@ -19,13 +19,18 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 	if (e.key === "Enter" && textInput.value) {
 		todoCount++;
 
+		// Create todo container and inner elements
 		const todoContainer = document.createElement("div");
 		todoContainer.className = "todo-container";
+
 		const todoItem = document.createElement("div");
 		todoItem.className = "todo-item";
-		const cancelBtn = document.createElement("div");
+
+		const cancelBtn = document.createElement("button");
 		cancelBtn.innerHTML = cancelBtnSvg;
 		cancelBtn.className = "cancel-btn";
+
+		// Append items to the container
 		todoContainer.appendChild(todoItem);
 		todoContainer.appendChild(cancelBtn);
 		todosContainer?.appendChild(todoContainer);
@@ -38,12 +43,38 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 		checkBox.id = uniqueId;
 		todoItem.appendChild(checkBox);
 
+		// Create the label and append it
 		const label = document.createElement("label");
 		label.setAttribute("for", uniqueId);
 		label.textContent = textInput.value;
 		todoItem.appendChild(label);
+
+		// Clear the text input
 		textInput.value = "";
 
+		(checkBox as HTMLInputElement).onclick = (e: MouseEvent): void => {
+			// Get the label in the current todo item
+			const activeLabel = todoContainer.querySelector("label") as HTMLLabelElement | null;
+			// Toggle the "checked" class based on the checkbox state
+			if ((checkBox as HTMLInputElement).checked) {
+				activeLabel?.classList.add("checked");
+				cancelBtn.onclick = (e: MouseEvent): void => {
+					e.preventDefault();
+					todoContainer.remove();
+
+					// Query the DOM for the bottom row each time
+					const bottomDiv = document.querySelector(".bottom-row");
+					if (todosContainer.children.length === 0 && bottomDiv) {
+						bottomDivRendered = false;
+						bottomDiv?.remove();
+					}
+				};
+			} else {
+				activeLabel?.classList.remove("checked");
+			}
+		};
+
+		// If the bottom row hasn't been rendered, add it
 		if (todosContainer && !bottomDivRendered) {
 			const bottomDiv = document.createElement("div");
 			bottomDiv.classList.add("bottom-row");
@@ -53,17 +84,5 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 			todosContainer.insertAdjacentElement("afterend", bottomDiv);
 			bottomDivRendered = true;
 		}
-
-		const checkboxes = document.querySelectorAll(".checkbox");
-		checkboxes.forEach((checkbox) => {
-			(checkbox as HTMLInputElement).onclick = (e: MouseEvent): void => {
-				e.preventDefault();
-
-				const activeLabel = (checkbox as HTMLInputElement)
-					.nextElementSibling as HTMLLabelElement | null;
-				console.log(checkbox);
-				console.log(activeLabel);
-			};
-		});
 	}
 };
