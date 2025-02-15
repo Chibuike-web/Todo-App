@@ -117,7 +117,7 @@ header .input-content #text-input::placeholder {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  width: 100%;
+  cursor: pointer;
 }
 #todos-container .todo-container .todo-item .checkbox {
   -webkit-appearance: none;
@@ -167,7 +167,38 @@ header .input-content #text-input::placeholder {
 }
 
 .bottom-row {
+  width: 100%;
+  display: inline-flex;
   padding: 20px;
+}
+.bottom-row p {
+  font-size: 14px;
+  margin-right: 107px;
+  color: hsl(252, 3%, 69%);
+  letter-spacing: -0.02em;
+}
+.bottom-row .filter-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.bottom-row .filter-container button {
+  font-family: "Josefin Sans";
+  font-size: 14px;
+  font-weight: 700;
+  color: hsl(236, 9%, 61%);
+  letter-spacing: -0.02em;
+}
+.bottom-row .filter-container .active {
+  color: hsl(220, 98%, 61%);
+}
+.bottom-row .clear-completed-btn {
+  font-family: "Josefin Sans";
+  font-size: 14px;
+  font-weight: 500;
+  color: hsl(252, 3%, 69%);
+  letter-spacing: -0.02em;
+  margin-left: auto;
 }
 
 .checked {

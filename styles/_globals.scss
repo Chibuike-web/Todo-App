@@ -117,7 +117,7 @@ header {
 			display: flex;
 			align-items: center;
 			gap: 1.25rem;
-			width: 100%;
+			cursor: pointer;
 
 			.checkbox {
 				-webkit-appearance: none;
@@ -176,7 +176,42 @@ header {
 }
 
 .bottom-row {
+	width: 100%;
+	display: inline-flex;
 	padding: 20px;
+	p {
+		font-size: 14px;
+		margin-right: 107px;
+		color: $lightGrayishBlue;
+		letter-spacing: -0.02em;
+	}
+
+	.filter-container {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+
+		button {
+			font-family: $fontFamily;
+			font-size: 14px;
+			font-weight: 700;
+			color: $darkGrayishBlue;
+			letter-spacing: -0.02em;
+		}
+
+		.active {
+			color: $brightBlue;
+		}
+	}
+
+	.clear-completed-btn {
+		font-family: $fontFamily;
+		font-size: 14px;
+		font-weight: 500;
+		color: $lightGrayishBlue;
+		letter-spacing: -0.02em;
+		margin-left: auto;
+	}
 }
 
 .checked {

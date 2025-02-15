@@ -15,6 +15,13 @@ const cancelBtnSvg = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none
 let todoCount: number = 0;
 let bottomDivRendered: boolean = false;
 
+function updateTodoCount() {
+	const bottomRowParagraph = document.querySelector(".bottom-row p");
+	if (bottomRowParagraph) {
+		bottomRowParagraph.textContent = `${todoCount} items left`;
+	}
+}
+
 textInput.onkeydown = (e: KeyboardEvent): void => {
 	if (e.key === "Enter" && textInput.value) {
 		todoCount++;
@@ -23,7 +30,10 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 		const todoContainer = document.createElement("div");
 		todoContainer.className = "todo-container";
 
-		const todoItem = document.createElement("div");
+		const uniqueId = `task-${todoCount}`;
+
+		const todoItem = document.createElement("label");
+		todoItem.setAttribute("for", uniqueId);
 		todoItem.className = "todo-item";
 
 		const cancelBtn = document.createElement("button");
@@ -35,19 +45,15 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 		todoContainer.appendChild(cancelBtn);
 		todosContainer?.appendChild(todoContainer);
 
-		const uniqueId = `task-${todoCount}`;
-
 		const checkBox = document.createElement("input");
 		checkBox.type = "checkbox";
 		checkBox.className = "checkbox";
 		checkBox.id = uniqueId;
 		todoItem.appendChild(checkBox);
 
-		// Create the label and append it
-		const label = document.createElement("label");
-		label.setAttribute("for", uniqueId);
-		label.textContent = textInput.value;
-		todoItem.appendChild(label);
+		const p = document.createElement("p");
+		p.textContent = textInput.value;
+		todoItem.appendChild(p);
 
 		// Clear the text input
 		textInput.value = "";
@@ -67,6 +73,7 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 					if (todosContainer.children.length === 0 && bottomDiv) {
 						bottomDivRendered = false;
 						bottomDiv?.remove();
+						// todoCount--;
 					}
 				};
 			} else {
@@ -79,10 +86,53 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 			const bottomDiv = document.createElement("div");
 			bottomDiv.classList.add("bottom-row");
 			const paragraph = document.createElement("p");
-			paragraph.textContent = "5 items left";
+			paragraph.textContent = `${todoCount} items left`;
 			bottomDiv.appendChild(paragraph);
+
+			const filterContainer = document.createElement("div");
+			filterContainer.className = "filter-container";
+			const allBtn = document.createElement("button");
+			allBtn.type = "button";
+			allBtn.textContent = "All";
+			allBtn.className = "all-btn";
+			allBtn.classList.add("active");
+			filterContainer.appendChild(allBtn);
+
+			const activeBtn = document.createElement("button");
+			activeBtn.type = "button";
+			activeBtn.textContent = "Active";
+			activeBtn.className = "active-btn";
+			filterContainer.appendChild(activeBtn);
+
+			const completedBtn = document.createElement("button");
+			completedBtn.type = "button";
+			completedBtn.textContent = "Completed";
+			completedBtn.className = "completed-btn";
+			filterContainer.appendChild(completedBtn);
+
+			const filteredBtns = filterContainer.querySelectorAll("button");
+
+			filteredBtns.forEach((filteredBtn) => {
+				filteredBtn.onclick = (e) => {
+					e.preventDefault();
+					filteredBtns.forEach((btn) => btn.classList.remove("active"));
+					filteredBtn.classList.add("active");
+				};
+			});
+
+			bottomDiv.appendChild(filterContainer);
+
+			const clearCompletedBtn = document.createElement("button");
+			clearCompletedBtn.type = "button";
+			clearCompletedBtn.className = "clear-completed-btn";
+			clearCompletedBtn.textContent = "Clear Completed";
+
+			bottomDiv.appendChild(clearCompletedBtn);
+
 			todosContainer.insertAdjacentElement("afterend", bottomDiv);
 			bottomDivRendered = true;
+		} else {
+			updateTodoCount();
 		}
 	}
 };
