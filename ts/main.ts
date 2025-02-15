@@ -65,6 +65,9 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 			if ((checkBox as HTMLInputElement).checked) {
 				activeLabel?.classList.add("checked");
 				cancelBtn.onclick = (e: MouseEvent): void => {
+					if (!checkBox.checked) {
+						return;
+					}
 					e.preventDefault();
 					todoContainer.remove();
 
@@ -73,7 +76,6 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 					if (todosContainer.children.length === 0 && bottomDiv) {
 						bottomDivRendered = false;
 						bottomDiv?.remove();
-						// todoCount--;
 					}
 				};
 			} else {

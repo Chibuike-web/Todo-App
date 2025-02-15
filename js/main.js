@@ -54,6 +54,9 @@ textInput.onkeydown = (e) => {
             if (checkBox.checked) {
                 activeLabel === null || activeLabel === void 0 ? void 0 : activeLabel.classList.add("checked");
                 cancelBtn.onclick = (e) => {
+                    if (!checkBox.checked) {
+                        return;
+                    }
                     e.preventDefault();
                     todoContainer.remove();
                     // Query the DOM for the bottom row each time
@@ -61,7 +64,6 @@ textInput.onkeydown = (e) => {
                     if (todosContainer.children.length === 0 && bottomDiv) {
                         bottomDivRendered = false;
                         bottomDiv === null || bottomDiv === void 0 ? void 0 : bottomDiv.remove();
-                        // todoCount--;
                     }
                 };
             }
