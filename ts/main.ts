@@ -1,3 +1,4 @@
+import { activeButtonEvent } from "./active.js";
 const textInput = document.getElementById("text-input") as HTMLInputElement;
 const todosContainer = document.getElementById("todos-container") as HTMLElement;
 const cancelBtnSvg = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,6 +106,7 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 			activeBtn.textContent = "Active";
 			activeBtn.className = "active-btn";
 			filterContainer.appendChild(activeBtn);
+			activeButtonEvent(activeBtn);
 
 			const completedBtn = document.createElement("button");
 			completedBtn.type = "button";
@@ -115,11 +117,11 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 			const filteredBtns = filterContainer.querySelectorAll("button");
 
 			filteredBtns.forEach((filteredBtn) => {
-				filteredBtn.onclick = (e) => {
+				filteredBtn.addEventListener("click", (e) => {
 					e.preventDefault();
 					filteredBtns.forEach((btn) => btn.classList.remove("active"));
 					filteredBtn.classList.add("active");
-				};
+				});
 			});
 
 			bottomDiv.appendChild(filterContainer);

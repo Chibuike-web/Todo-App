@@ -1,4 +1,4 @@
-"use strict";
+import { activeButtonEvent } from "./active.js";
 const textInput = document.getElementById("text-input");
 const todosContainer = document.getElementById("todos-container");
 const cancelBtnSvg = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +36,7 @@ textInput.onkeydown = (e) => {
         // Append items to the container
         todoContainer.appendChild(todoItem);
         todoContainer.appendChild(cancelBtn);
-        todosContainer === null || todosContainer === void 0 ? void 0 : todosContainer.appendChild(todoContainer);
+        todosContainer?.appendChild(todoContainer);
         const checkBox = document.createElement("input");
         checkBox.type = "checkbox";
         checkBox.className = "checkbox";
@@ -52,7 +52,7 @@ textInput.onkeydown = (e) => {
             const activeLabel = todoContainer.querySelector("label");
             // Toggle the "checked" class based on the checkbox state
             if (checkBox.checked) {
-                activeLabel === null || activeLabel === void 0 ? void 0 : activeLabel.classList.add("checked");
+                activeLabel?.classList.add("checked");
                 cancelBtn.onclick = (e) => {
                     if (!checkBox.checked) {
                         return;
@@ -63,12 +63,12 @@ textInput.onkeydown = (e) => {
                     const bottomDiv = document.querySelector(".bottom-row");
                     if (todosContainer.children.length === 0 && bottomDiv) {
                         bottomDivRendered = false;
-                        bottomDiv === null || bottomDiv === void 0 ? void 0 : bottomDiv.remove();
+                        bottomDiv?.remove();
                     }
                 };
             }
             else {
-                activeLabel === null || activeLabel === void 0 ? void 0 : activeLabel.classList.remove("checked");
+                activeLabel?.classList.remove("checked");
             }
         };
         // If the bottom row hasn't been rendered, add it
@@ -91,6 +91,7 @@ textInput.onkeydown = (e) => {
             activeBtn.textContent = "Active";
             activeBtn.className = "active-btn";
             filterContainer.appendChild(activeBtn);
+            activeButtonEvent(activeBtn);
             const completedBtn = document.createElement("button");
             completedBtn.type = "button";
             completedBtn.textContent = "Completed";
@@ -98,11 +99,11 @@ textInput.onkeydown = (e) => {
             filterContainer.appendChild(completedBtn);
             const filteredBtns = filterContainer.querySelectorAll("button");
             filteredBtns.forEach((filteredBtn) => {
-                filteredBtn.onclick = (e) => {
+                filteredBtn.addEventListener("click", (e) => {
                     e.preventDefault();
                     filteredBtns.forEach((btn) => btn.classList.remove("active"));
                     filteredBtn.classList.add("active");
-                };
+                });
             });
             bottomDiv.appendChild(filterContainer);
             const clearCompletedBtn = document.createElement("button");

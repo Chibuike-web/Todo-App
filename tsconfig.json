@@ -1,10 +1,10 @@
 {
 	"compilerOptions": {
-		"target": "ES2016",
-		"module": "none",
+		"target": "ES2022",
+		"module": "ESNext",
 		"outDir": "./js",
 		"rootDir": "./ts",
-		"strict": true, //
+		"strict": true,
 		"noEmitOnError": true
 	},
 	"include": ["ts/**/*.ts"]
