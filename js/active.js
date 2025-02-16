@@ -1,4 +1,4 @@
-export const activeButtonEvent = (activeBtn) => {
+export const activeButtonEvent = (activeBtn, updateTodoCount) => {
     activeBtn.addEventListener("click", (e) => {
         e.preventDefault();
         console.log("click");
@@ -8,11 +8,9 @@ export const activeButtonEvent = (activeBtn) => {
             const input = todoItem.querySelector("input");
             if (!input?.checked && todoContainer) {
                 todoContainer.remove();
-            }
-            else {
-                return;
+                // Directly update the global variables
+                updateTodoCount();
             }
         });
-        console.log(todoItems);
     });
 };

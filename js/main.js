@@ -59,6 +59,8 @@ textInput.onkeydown = (e) => {
                     }
                     e.preventDefault();
                     todoContainer.remove();
+                    todoCount--;
+                    updateTodoCount();
                     // Query the DOM for the bottom row each time
                     const bottomDiv = document.querySelector(".bottom-row");
                     if (todosContainer.children.length === 0 && bottomDiv) {
@@ -91,7 +93,7 @@ textInput.onkeydown = (e) => {
             activeBtn.textContent = "Active";
             activeBtn.className = "active-btn";
             filterContainer.appendChild(activeBtn);
-            activeButtonEvent(activeBtn);
+            activeButtonEvent(activeBtn, updateTodoCount);
             const completedBtn = document.createElement("button");
             completedBtn.type = "button";
             completedBtn.textContent = "Completed";
