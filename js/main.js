@@ -15,20 +15,52 @@ const cancelBtnSvg = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none
 let todoCount = 0;
 let bottomDivRendered = false;
 function updateTodoCount() {
+    const todos = todosContainer.querySelectorAll(".todo-container");
     const bottomRowParagraph = document.querySelector(".bottom-row p");
     if (bottomRowParagraph) {
-        bottomRowParagraph.textContent = `${todoCount} items left`;
+        bottomRowParagraph.textContent = `${todos.length} items left`;
     }
 }
+const checkboxes = document.querySelectorAll(".checkbox");
+function attachCheckEvent(checkbox) {
+    checkbox.addEventListener("click", () => {
+        const activeLabel = checkbox.closest(".todo-item");
+        const todoContainer = checkbox.closest(".todo-container");
+        const cancelBtn = todoContainer?.querySelector(".cancel-btn");
+        if (checkbox.checked) {
+            activeLabel?.classList.add("checked");
+            if (cancelBtn) {
+                cancelBtn.onclick = (e) => {
+                    e.preventDefault();
+                    if (!checkbox.checked)
+                        return;
+                    todoContainer?.remove();
+                    todoCount--;
+                    updateTodoCount();
+                    // Check if bottom row needs to be removed
+                    const bottomDiv = document.querySelector(".bottom-row");
+                    if (todosContainer.children.length === 0 && bottomDiv) {
+                        bottomDivRendered = false;
+                        bottomDiv.remove();
+                    }
+                };
+            }
+        }
+        else {
+            activeLabel?.classList.remove("checked");
+        }
+    });
+}
+checkboxes.forEach((checkbox) => attachCheckEvent(checkbox));
 textInput.onkeydown = (e) => {
     if (e.key === "Enter" && textInput.value) {
         todoCount++;
         // Create todo container and inner elements
         const todoContainer = document.createElement("div");
         todoContainer.className = "todo-container";
-        const uniqueId = `task-${todoCount}`;
+        // const uniqueId = `task-${todoCount}`;
         const todoItem = document.createElement("label");
-        todoItem.setAttribute("for", uniqueId);
+        // todoItem.setAttribute("for", uniqueId);
         todoItem.className = "todo-item";
         const cancelBtn = document.createElement("button");
         cancelBtn.innerHTML = cancelBtnSvg;
@@ -40,39 +72,14 @@ textInput.onkeydown = (e) => {
         const checkBox = document.createElement("input");
         checkBox.type = "checkbox";
         checkBox.className = "checkbox";
-        checkBox.id = uniqueId;
+        // checkBox.id = uniqueId;
         todoItem.appendChild(checkBox);
         const p = document.createElement("p");
         p.textContent = textInput.value;
         todoItem.appendChild(p);
         // Clear the text input
         textInput.value = "";
-        checkBox.onclick = (e) => {
-            // Get the label in the current todo item
-            const activeLabel = todoContainer.querySelector("label");
-            // Toggle the "checked" class based on the checkbox state
-            if (checkBox.checked) {
-                activeLabel?.classList.add("checked");
-                cancelBtn.onclick = (e) => {
-                    if (!checkBox.checked) {
-                        return;
-                    }
-                    e.preventDefault();
-                    todoContainer.remove();
-                    todoCount--;
-                    updateTodoCount();
-                    // Query the DOM for the bottom row each time
-                    const bottomDiv = document.querySelector(".bottom-row");
-                    if (todosContainer.children.length === 0 && bottomDiv) {
-                        bottomDivRendered = false;
-                        bottomDiv?.remove();
-                    }
-                };
-            }
-            else {
-                activeLabel?.classList.remove("checked");
-            }
-        };
+        attachCheckEvent(checkBox);
         // If the bottom row hasn't been rendered, add it
         if (todosContainer && !bottomDivRendered) {
             const bottomDiv = document.createElement("div");

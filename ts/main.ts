@@ -17,11 +17,49 @@ let todoCount: number = 0;
 let bottomDivRendered: boolean = false;
 
 function updateTodoCount() {
+	const todos = todosContainer.querySelectorAll(".todo-container");
 	const bottomRowParagraph = document.querySelector(".bottom-row p");
 	if (bottomRowParagraph) {
-		bottomRowParagraph.textContent = `${todoCount} items left`;
+		bottomRowParagraph.textContent = `${todos.length} items left`;
 	}
 }
+
+const checkboxes = document.querySelectorAll(".checkbox");
+function attachCheckEvent(checkbox: HTMLInputElement): void {
+	checkbox.addEventListener("click", () => {
+		const activeLabel = checkbox.closest(".todo-item");
+		const todoContainer = checkbox.closest(".todo-container");
+		const cancelBtn = todoContainer?.querySelector(".cancel-btn");
+
+		if ((checkbox as HTMLInputElement).checked) {
+			activeLabel?.classList.add("checked");
+
+			if (cancelBtn) {
+				(cancelBtn as HTMLButtonElement).onclick = (e: MouseEvent) => {
+					e.preventDefault();
+
+					if (!(checkbox as HTMLInputElement).checked) return;
+
+					todoContainer?.remove();
+					todoCount--;
+
+					updateTodoCount();
+
+					// Check if bottom row needs to be removed
+					const bottomDiv = document.querySelector(".bottom-row");
+					if (todosContainer.children.length === 0 && bottomDiv) {
+						bottomDivRendered = false;
+						bottomDiv.remove();
+					}
+				};
+			}
+		} else {
+			activeLabel?.classList.remove("checked");
+		}
+	});
+}
+
+checkboxes.forEach((checkbox) => attachCheckEvent(checkbox as HTMLInputElement));
 
 textInput.onkeydown = (e: KeyboardEvent): void => {
 	if (e.key === "Enter" && textInput.value) {
@@ -31,10 +69,10 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 		const todoContainer = document.createElement("div");
 		todoContainer.className = "todo-container";
 
-		const uniqueId = `task-${todoCount}`;
+		// const uniqueId = `task-${todoCount}`;
 
 		const todoItem = document.createElement("label");
-		todoItem.setAttribute("for", uniqueId);
+		// todoItem.setAttribute("for", uniqueId);
 		todoItem.className = "todo-item";
 
 		const cancelBtn = document.createElement("button");
@@ -49,7 +87,7 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 		const checkBox = document.createElement("input");
 		checkBox.type = "checkbox";
 		checkBox.className = "checkbox";
-		checkBox.id = uniqueId;
+		// checkBox.id = uniqueId;
 		todoItem.appendChild(checkBox);
 
 		const p = document.createElement("p");
@@ -59,32 +97,7 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 		// Clear the text input
 		textInput.value = "";
 
-		(checkBox as HTMLInputElement).onclick = (e: MouseEvent): void => {
-			// Get the label in the current todo item
-			const activeLabel = todoContainer.querySelector("label") as HTMLLabelElement | null;
-			// Toggle the "checked" class based on the checkbox state
-			if ((checkBox as HTMLInputElement).checked) {
-				activeLabel?.classList.add("checked");
-				cancelBtn.onclick = (e: MouseEvent): void => {
-					if (!checkBox.checked) {
-						return;
-					}
-					e.preventDefault();
-					todoContainer.remove();
-					todoCount--;
-
-					updateTodoCount();
-					// Query the DOM for the bottom row each time
-					const bottomDiv = document.querySelector(".bottom-row");
-					if (todosContainer.children.length === 0 && bottomDiv) {
-						bottomDivRendered = false;
-						bottomDiv?.remove();
-					}
-				};
-			} else {
-				activeLabel?.classList.remove("checked");
-			}
-		};
+		attachCheckEvent(checkBox as HTMLInputElement);
 
 		// If the bottom row hasn't been rendered, add it
 		if (todosContainer && !bottomDivRendered) {
