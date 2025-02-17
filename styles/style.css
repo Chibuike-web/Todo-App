@@ -204,4 +204,8 @@ header .input-content #text-input::placeholder {
 .checked {
   text-decoration: line-through;
   color: hsl(240, 2%, 82%);
+}
+
+.hide {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
