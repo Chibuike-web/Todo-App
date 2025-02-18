@@ -165,6 +165,9 @@ header .input-content #text-input::placeholder {
   transform: scale(0.6);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
+#todos-container .hide-todo {
+  display: none;
+}
 
 .bottom-row {
   width: 100%;
