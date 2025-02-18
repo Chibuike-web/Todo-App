@@ -30,8 +30,16 @@ if (todoItemQuantity) {
 export function updateTodoCount(): void {
 	const todos = todosContainer.querySelectorAll(".todo-container");
 	const bottomRowParagraph = document.querySelector(".bottom-row p");
+	let length = todos.length;
+
+	todos.forEach((todo) => {
+		if (todo.classList.contains("hide-todo")) {
+			length--;
+		}
+	});
+
 	if (bottomRowParagraph) {
-		bottomRowParagraph.textContent = `${todos.length} items left`;
+		bottomRowParagraph.textContent = `${length} items left`;
 	}
 }
 
