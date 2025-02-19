@@ -1,5 +1,6 @@
 import "./active.js";
 import "./completed.js";
+import "./all.js";
 
 // Cached DOM elements
 const textInput = document.getElementById("text-input") as HTMLInputElement;

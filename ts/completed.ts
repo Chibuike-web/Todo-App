@@ -3,7 +3,12 @@ const completedBtn = document.querySelector(".completed-btn");
 
 completedBtn?.addEventListener("click", (e: Event) => {
 	e.preventDefault();
-	console.log(completedBtn);
+
+	const todoContainer = document.querySelectorAll(".todo-container");
+	todoContainer.forEach((todo) => {
+		todo.classList.remove("hide-todo");
+	});
+
 	const todoItems = document.querySelectorAll(".todo-item");
 	todoItems.forEach((todoItem) => {
 		const todoContainer = todoItem.closest(".todo-container");
