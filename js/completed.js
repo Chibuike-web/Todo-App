@@ -5,6 +5,7 @@ completedBtn?.addEventListener("click", (e) => {
     const todoContainer = document.querySelectorAll(".todo-container");
     todoContainer.forEach((todo) => {
         todo.classList.remove("hide-todo");
+        updateTodoCount();
     });
     const todoItems = document.querySelectorAll(".todo-item");
     todoItems.forEach((todoItem) => {
