@@ -22,7 +22,14 @@ const cancelBtnSvg = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none
 // Initialize todo count display
 if (todoItemQuantity) {
     const todos = todosContainer.querySelectorAll(".todo-container");
-    todoItemQuantity.textContent = `${todos.length} items left`;
+    let result;
+    if (todos.length > 1) {
+        result = `${todos.length} items left`;
+    }
+    else {
+        result = `${todos.length} item left`;
+    }
+    todoItemQuantity.textContent = result;
 }
 //  Update the bottom row paragraph with the current number of todo items.
 export function updateTodoCount() {
@@ -35,7 +42,14 @@ export function updateTodoCount() {
         }
     });
     if (bottomRowParagraph) {
-        bottomRowParagraph.textContent = `${length} items left`;
+        let result;
+        if (length > 1) {
+            result = `${length} items left`;
+        }
+        else {
+            result = `${length} item left`;
+        }
+        bottomRowParagraph.textContent = result;
     }
 }
 // Attach event to checkbox for toggling the checked state and handling deletion.
