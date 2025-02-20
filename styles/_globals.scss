@@ -28,6 +28,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
+	padding-inline: 1rem;
 }
 
 header {
@@ -128,6 +129,7 @@ header {
 				width: 26px;
 				height: 26px;
 				cursor: pointer;
+				flex-shrink: 0;
 
 				&:checked {
 					background: $checkBackground;
@@ -180,11 +182,11 @@ header {
 
 .bottom-row {
 	width: 100%;
-	display: inline-flex;
+	display: flex;
+	justify-content: space-between;
 	padding: 20px;
 	p {
 		font-size: 14px;
-		margin-right: 107px;
 		color: $lightGrayishBlue;
 		letter-spacing: -0.02em;
 	}
@@ -213,7 +215,6 @@ header {
 		font-weight: 500;
 		color: $lightGrayishBlue;
 		letter-spacing: -0.02em;
-		margin-left: auto;
 	}
 }
 

@@ -7,6 +7,7 @@ const todosContainer = document.getElementById("todos-container");
 const todoItemQuantity = document.querySelector(".todo-item-quantity");
 const filterContainer = document.querySelector(".filter-container");
 const bottomDiv = document.querySelector(".bottom-row");
+const clearCompletedBtn = document.querySelector(".clear-completed-btn");
 let todoCount = 0;
 const cancelBtnSvg = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<g clip-path="url(#clip0_1760_33)">
@@ -109,3 +110,14 @@ textInput.onkeydown = (e) => {
         updateTodoCount();
     }
 };
+clearCompletedBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    const todos = document.querySelectorAll(".todo-container");
+    todos.forEach((todo) => {
+        const todoItem = todo.querySelector(".todo-item");
+        if (todoItem?.classList.contains("checked")) {
+            todo.remove();
+            updateTodoCount();
+        }
+    });
+});

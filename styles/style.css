@@ -28,6 +28,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-inline: 1rem;
 }
 
 header {
@@ -129,6 +130,7 @@ header .input-content #text-input::placeholder {
   width: 26px;
   height: 26px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 #todos-container .todo-container .todo-item .checkbox:checked {
   background: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
@@ -171,12 +173,12 @@ header .input-content #text-input::placeholder {
 
 .bottom-row {
   width: 100%;
-  display: inline-flex;
+  display: flex;
+  justify-content: space-between;
   padding: 20px;
 }
 .bottom-row p {
   font-size: 14px;
-  margin-right: 107px;
   color: hsl(252, 3%, 69%);
   letter-spacing: -0.02em;
 }
@@ -201,7 +203,6 @@ header .input-content #text-input::placeholder {
   font-weight: 500;
   color: hsl(252, 3%, 69%);
   letter-spacing: -0.02em;
-  margin-left: auto;
 }
 
 .checked {
