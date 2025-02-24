@@ -1,19 +1,3 @@
-// Typography
-
-$fontFamily: "Josefin Sans";
-$body: 600;
-$heading: 800;
-
-// Colors
-
-// Primary
-
-$brightBlue: hsl(220, 98%, 61%);
-$checkBackground: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-//  Neutral
-
-//  Light Theme
-
 $veryLightGray: hsl(0, 0%, 98%);
 $veryLightGrayishBlue: hsl(240, 2%, 82%);
 $lightGrayishBlue: hsl(252, 3%, 69%);
@@ -29,3 +13,31 @@ $light-grayish-blue-hover: hsl(236, 33%, 92%);
 $dark-grayish-blue-dark: hsl(234, 11%, 52%);
 $very-dark-grayish-blue-dark: hsl(233, 14%, 35%);
 $very-dark-grayish-blue-alt: hsl(237, 14%, 26%);
+
+:root {
+	// Typography
+	--font-family: "Josefin Sans";
+	--body-weight: 600;
+	--heading-weight: 800;
+
+	// Primary
+	--bright-blue: hsl(220, 98%, 61%);
+	--check-background: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+	// Light Theme
+	--background: hsl(0, 0%, 98%);
+	--text-color: hsl(235, 19%, 35%);
+	--border-color: hsl(240, 2%, 82%);
+	--todo-bg: white;
+	--placeholder-color: hsl(236, 9%, 61%);
+	--bottom-paragraph: hsl(252, 3%, 69%);
+	--bottom-button: hsl(236, 9%, 61%);
+}
+
+.dark-theme {
+	--background: hsl(235, 21%, 11%);
+	--text-color: hsl(234, 39%, 85%);
+	--border-color: hsl(234, 11%, 52%);
+	--todo-bg: hsl(235, 24%, 19%);
+	--placeholder-color: hsl(234, 11%, 52%);
+}

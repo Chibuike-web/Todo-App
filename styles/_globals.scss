@@ -12,9 +12,9 @@ button {
 }
 
 body {
-	font-family: $fontFamily;
-	font-weight: $body;
-	background-color: $veryLightGray;
+	font-family: var(--font-family);
+	font-weight: var(--body-weight);
+	background-color: var(--background);
 	height: 100vh;
 	background-image: url("../assets/bg-desktop-light.jpg");
 	background-repeat: no-repeat;
@@ -45,7 +45,7 @@ header {
 
 	.input-content {
 		padding-block: 1.5rem;
-		background-color: white;
+		background-color: var(--todo-bg);
 		border-radius: 0.25rem;
 		display: flex;
 		align-items: center;
@@ -61,7 +61,7 @@ header {
 				-webkit-appearance: none;
 				appearance: none;
 				border-radius: 50%;
-				border: 0.125rem solid $veryLightGrayishBlue;
+				border: 0.125rem solid var(--border-color);
 				position: relative;
 				width: 100%;
 				height: 100%;
@@ -71,24 +71,25 @@ header {
 		#text-input {
 			outline: none;
 			border: none;
-			font-size: 1.125rem; // 18px
+			font-size: 1.125rem;
 			width: 100%;
-			color: $veryDarkGrayishBlue;
-			font-family: $fontFamily;
-			font-size: 1.125rem; // 18px
+			color: var(--text-color);
+			font-family: var(--font-family);
+			font-size: 1.125rem;
+			background-color: transparent;
 		}
 
 		#text-input::placeholder {
-			color: $darkGrayishBlue;
-			font-family: $fontFamily;
-			font-size: 1.125rem; // 18px
+			color: var(--placeholder-color);
+			font-family: var(--font-family);
+			font-size: 1.125rem;
 		}
 	}
 }
 
 .wrapper {
 	border-radius: 0.25rem;
-	background-color: white;
+	background-color: var(--todo-bg);
 	overflow: hidden;
 	box-shadow: 0 24px 64px -24px rgba(72, 75, 106, 0.25);
 	margin-bottom: 48px;
@@ -100,14 +101,14 @@ header {
 		display: flex;
 		align-items: center;
 		padding-block: 1.5rem;
-		background-color: white;
+		background-color: var(--todo-bg);
 		cursor: pointer;
 		display: flex;
 		align-items: center;
 		padding-inline: 1.25rem;
 		justify-content: space-between;
 		width: 100%;
-		border-bottom: 1px solid $veryLightGrayishBlue;
+		border-bottom: 1px solid var(--border-color);
 
 		&:hover .cancel-btn {
 			opacity: 1;
@@ -120,11 +121,15 @@ header {
 			gap: 1.25rem;
 			cursor: pointer;
 
+			p {
+				color: var(--text-color);
+			}
+
 			.checkbox {
 				-webkit-appearance: none;
 				appearance: none;
 				border-radius: 50%;
-				border: 0.125rem solid $veryLightGrayishBlue;
+				border: 0.125rem solid var(--border-color);
 				position: relative;
 				width: 26px;
 				height: 26px;
@@ -132,7 +137,7 @@ header {
 				flex-shrink: 0;
 
 				&:checked {
-					background: $checkBackground;
+					background: var(--check-background);
 					border: none;
 
 					// Ensure checkmark remains visible
@@ -141,13 +146,13 @@ header {
 					}
 
 					&:hover {
-						background: $checkBackground;
+						background: var(--check-background);
 					}
 				}
 
 				&:hover {
 					border: 0.125rem solid transparent;
-					background: linear-gradient(#fff, #fff) padding-box, $checkBackground border-box;
+					background: linear-gradient(#fff, #fff) padding-box, var(--check-background) border-box;
 					background-clip: padding-box, border-box;
 					-webkit-background-clip: padding-box, border-box;
 				}
@@ -187,7 +192,7 @@ header {
 	padding: 20px;
 	p {
 		font-size: 14px;
-		color: $lightGrayishBlue;
+		color: var(--bottom-paragraph);
 		letter-spacing: -0.02em;
 	}
 
@@ -197,30 +202,30 @@ header {
 		align-items: center;
 
 		button {
-			font-family: $fontFamily;
+			font-family: var(--font-family);
 			font-size: 14px;
 			font-weight: 700;
-			color: $darkGrayishBlue;
+			color: var(--bottom-button);
 			letter-spacing: -0.02em;
 		}
 
 		.active {
-			color: $brightBlue;
+			color: var(--bright-blue);
 		}
 	}
 
 	.clear-completed-btn {
-		font-family: $fontFamily;
+		font-family: var(--font-family);
 		font-size: 14px;
 		font-weight: 500;
-		color: $lightGrayishBlue;
+		color: var(--bottom-paragraph);
 		letter-spacing: -0.02em;
 	}
 }
 
 .checked {
 	text-decoration: line-through;
-	color: $veryLightGrayishBlue;
+	color: var(--border-color);
 }
 
 .hide {

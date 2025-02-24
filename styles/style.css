@@ -1,3 +1,26 @@
+:root {
+  --font-family: "Josefin Sans";
+  --body-weight: 600;
+  --heading-weight: 800;
+  --bright-blue: hsl(220, 98%, 61%);
+  --check-background: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --background: hsl(0, 0%, 98%);
+  --text-color: hsl(235, 19%, 35%);
+  --border-color: hsl(240, 2%, 82%);
+  --todo-bg: white;
+  --placeholder-color: hsl(236, 9%, 61%);
+  --bottom-paragraph: hsl(252, 3%, 69%);
+  --bottom-button: hsl(236, 9%, 61%);
+}
+
+.dark-theme {
+  --background: hsl(235, 21%, 11%);
+  --text-color: hsl(234, 39%, 85%);
+  --border-color: hsl(234, 11%, 52%);
+  --todo-bg: hsl(235, 24%, 19%);
+  --placeholder-color: hsl(234, 11%, 52%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +35,9 @@ button {
 }
 
 body {
-  font-family: "Josefin Sans";
-  font-weight: 600;
-  background-color: hsl(0, 0%, 98%);
+  font-family: var(--font-family);
+  font-weight: var(--body-weight);
+  background-color: var(--background);
   height: 100vh;
   background-image: url("../assets/bg-desktop-light.jpg");
   background-repeat: no-repeat;
@@ -44,7 +67,7 @@ header .header-content {
 }
 header .input-content {
   padding-block: 1.5rem;
-  background-color: white;
+  background-color: var(--todo-bg);
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
@@ -61,7 +84,7 @@ header .input-content .checkbox-container .first-checkbox {
   -moz-appearance: none;
        appearance: none;
   border-radius: 50%;
-  border: 0.125rem solid hsl(240, 2%, 82%);
+  border: 0.125rem solid var(--border-color);
   position: relative;
   width: 100%;
   height: 100%;
@@ -71,24 +94,25 @@ header .input-content #text-input {
   border: none;
   font-size: 1.125rem;
   width: 100%;
-  color: hsl(235, 19%, 35%);
-  font-family: "Josefin Sans";
+  color: var(--text-color);
+  font-family: var(--font-family);
   font-size: 1.125rem;
+  background-color: transparent;
 }
 header .input-content #text-input::-moz-placeholder {
-  color: hsl(236, 9%, 61%);
-  font-family: "Josefin Sans";
+  color: var(--placeholder-color);
+  font-family: var(--font-family);
   font-size: 1.125rem;
 }
 header .input-content #text-input::placeholder {
-  color: hsl(236, 9%, 61%);
-  font-family: "Josefin Sans";
+  color: var(--placeholder-color);
+  font-family: var(--font-family);
   font-size: 1.125rem;
 }
 
 .wrapper {
   border-radius: 0.25rem;
-  background-color: white;
+  background-color: var(--todo-bg);
   overflow: hidden;
   box-shadow: 0 24px 64px -24px rgba(72, 75, 106, 0.25);
   margin-bottom: 48px;
@@ -101,14 +125,14 @@ header .input-content #text-input::placeholder {
   display: flex;
   align-items: center;
   padding-block: 1.5rem;
-  background-color: white;
+  background-color: var(--todo-bg);
   cursor: pointer;
   display: flex;
   align-items: center;
   padding-inline: 1.25rem;
   justify-content: space-between;
   width: 100%;
-  border-bottom: 1px solid hsl(240, 2%, 82%);
+  border-bottom: 1px solid var(--border-color);
 }
 #todos-container .todo-container:hover .cancel-btn {
   opacity: 1;
@@ -120,12 +144,15 @@ header .input-content #text-input::placeholder {
   gap: 1.25rem;
   cursor: pointer;
 }
+#todos-container .todo-container .todo-item p {
+  color: var(--text-color);
+}
 #todos-container .todo-container .todo-item .checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
   border-radius: 50%;
-  border: 0.125rem solid hsl(240, 2%, 82%);
+  border: 0.125rem solid var(--border-color);
   position: relative;
   width: 26px;
   height: 26px;
@@ -133,18 +160,18 @@ header .input-content #text-input::placeholder {
   flex-shrink: 0;
 }
 #todos-container .todo-container .todo-item .checkbox:checked {
-  background: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background: var(--check-background);
   border: none;
 }
 #todos-container .todo-container .todo-item .checkbox:checked::after {
   display: block;
 }
 #todos-container .todo-container .todo-item .checkbox:checked:hover {
-  background: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background: var(--check-background);
 }
 #todos-container .todo-container .todo-item .checkbox:hover {
   border: 0.125rem solid transparent;
-  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+  background: linear-gradient(#fff, #fff) padding-box, var(--check-background) border-box;
   background-clip: padding-box, border-box;
   -webkit-background-clip: padding-box, border-box;
 }
@@ -179,7 +206,7 @@ header .input-content #text-input::placeholder {
 }
 .bottom-row p {
   font-size: 14px;
-  color: hsl(252, 3%, 69%);
+  color: var(--bottom-paragraph);
   letter-spacing: -0.02em;
 }
 .bottom-row .filter-container {
@@ -188,26 +215,26 @@ header .input-content #text-input::placeholder {
   align-items: center;
 }
 .bottom-row .filter-container button {
-  font-family: "Josefin Sans";
+  font-family: var(--font-family);
   font-size: 14px;
   font-weight: 700;
-  color: hsl(236, 9%, 61%);
+  color: var(--bottom-button);
   letter-spacing: -0.02em;
 }
 .bottom-row .filter-container .active {
-  color: hsl(220, 98%, 61%);
+  color: var(--bright-blue);
 }
 .bottom-row .clear-completed-btn {
-  font-family: "Josefin Sans";
+  font-family: var(--font-family);
   font-size: 14px;
   font-weight: 500;
-  color: hsl(252, 3%, 69%);
+  color: var(--bottom-paragraph);
   letter-spacing: -0.02em;
 }
 
 .checked {
   text-decoration: line-through;
-  color: hsl(240, 2%, 82%);
+  color: var(--border-color);
 }
 
 .hide {
