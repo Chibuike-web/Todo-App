@@ -171,7 +171,7 @@ header .input-content #text-input::placeholder {
 }
 #todos-container .todo-container .todo-item .checkbox:hover {
   border: 0.125rem solid transparent;
-  background: linear-gradient(#fff, #fff) padding-box, var(--check-background) border-box;
+  background: linear-gradient(var(--todo-bg), var(--todo-bg)) padding-box, var(--check-background) border-box;
   background-clip: padding-box, border-box;
   -webkit-background-clip: padding-box, border-box;
 }
@@ -188,6 +188,13 @@ header .input-content #text-input::placeholder {
   transform: translate(-50%, -50%);
   z-index: 100;
   display: none;
+}
+#todos-container .todo-container .todo-item.checked {
+  text-decoration: line-through;
+  color: var(--border-color);
+}
+#todos-container .todo-container .todo-item.checked p {
+  color: var(--border-color);
 }
 #todos-container .todo-container .cancel-btn {
   opacity: 0;
@@ -230,11 +237,6 @@ header .input-content #text-input::placeholder {
   font-weight: 500;
   color: var(--bottom-paragraph);
   letter-spacing: -0.02em;
-}
-
-.checked {
-  text-decoration: line-through;
-  color: var(--border-color);
 }
 
 .hide {

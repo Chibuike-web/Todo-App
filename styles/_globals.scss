@@ -152,7 +152,8 @@ header {
 
 				&:hover {
 					border: 0.125rem solid transparent;
-					background: linear-gradient(#fff, #fff) padding-box, var(--check-background) border-box;
+					background: linear-gradient(var(--todo-bg), var(--todo-bg)) padding-box,
+						var(--check-background) border-box;
 					background-clip: padding-box, border-box;
 					-webkit-background-clip: padding-box, border-box;
 				}
@@ -170,6 +171,14 @@ header {
 					transform: translate(-50%, -50%);
 					z-index: 100;
 					display: none;
+				}
+			}
+
+			&.checked {
+				text-decoration: line-through;
+				color: var(--border-color);
+				p {
+					color: var(--border-color);
 				}
 			}
 		}
@@ -221,11 +230,6 @@ header {
 		color: var(--bottom-paragraph);
 		letter-spacing: -0.02em;
 	}
-}
-
-.checked {
-	text-decoration: line-through;
-	color: var(--border-color);
 }
 
 .hide {
