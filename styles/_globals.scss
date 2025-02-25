@@ -16,7 +16,7 @@ body {
 	font-weight: var(--body-weight);
 	background-color: var(--background);
 	height: 100vh;
-	background-image: url("../assets/bg-desktop-light.jpg");
+	background-image: var(--bg-image);
 	background-repeat: no-repeat;
 	justify-items: center;
 	background-position: center top;
@@ -91,7 +91,7 @@ header {
 	border-radius: 0.25rem;
 	background-color: var(--todo-bg);
 	overflow: hidden;
-	box-shadow: 0 24px 64px -24px rgba(72, 75, 106, 0.25);
+	box-shadow: var(--box-shadow);
 	margin-bottom: 48px;
 }
 
@@ -218,6 +218,10 @@ header {
 			letter-spacing: -0.02em;
 		}
 
+		button:hover {
+			color: var(--text-color);
+		}
+
 		.active {
 			color: var(--bright-blue);
 		}
@@ -229,6 +233,9 @@ header {
 		font-weight: 500;
 		color: var(--bottom-paragraph);
 		letter-spacing: -0.02em;
+	}
+	.clear-completed-btn:hover {
+		color: var(--text-color);
 	}
 }
 

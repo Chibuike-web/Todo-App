@@ -11,6 +11,8 @@
   --placeholder-color: hsl(236, 9%, 61%);
   --bottom-paragraph: hsl(252, 3%, 69%);
   --bottom-button: hsl(236, 9%, 61%);
+  --box-shadow: 0 24px 64px -24px rgba(72, 75, 106, 0.25);
+  --bg-image: url("../assets/bg-desktop-light.jpg");
 }
 
 .dark-theme {
@@ -19,6 +21,8 @@
   --border-color: hsl(234, 11%, 52%);
   --todo-bg: hsl(235, 24%, 19%);
   --placeholder-color: hsl(234, 11%, 52%);
+  --box-shadow: 0 24px 64px -24px rgba(0, 0, 0, 0.6);
+  --bg-image: url("../assets/bg-desktop-dark.jpg");
 }
 
 * {
@@ -39,7 +43,7 @@ body {
   font-weight: var(--body-weight);
   background-color: var(--background);
   height: 100vh;
-  background-image: url("../assets/bg-desktop-light.jpg");
+  background-image: var(--bg-image);
   background-repeat: no-repeat;
   justify-items: center;
   background-position: center top;
@@ -114,7 +118,7 @@ header .input-content #text-input::placeholder {
   border-radius: 0.25rem;
   background-color: var(--todo-bg);
   overflow: hidden;
-  box-shadow: 0 24px 64px -24px rgba(72, 75, 106, 0.25);
+  box-shadow: var(--box-shadow);
   margin-bottom: 48px;
 }
 
@@ -228,6 +232,9 @@ header .input-content #text-input::placeholder {
   color: var(--bottom-button);
   letter-spacing: -0.02em;
 }
+.bottom-row .filter-container button:hover {
+  color: var(--text-color);
+}
 .bottom-row .filter-container .active {
   color: var(--bright-blue);
 }
@@ -237,6 +244,9 @@ header .input-content #text-input::placeholder {
   font-weight: 500;
   color: var(--bottom-paragraph);
   letter-spacing: -0.02em;
+}
+.bottom-row .clear-completed-btn:hover {
+  color: var(--text-color);
 }
 
 .hide {
