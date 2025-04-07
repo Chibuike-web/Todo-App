@@ -42,11 +42,17 @@ body {
   font-family: var(--font-family);
   font-weight: var(--body-weight);
   background-color: var(--background);
-  height: 100vh;
+  min-height: 100vh;
   background-image: var(--bg-image);
   background-repeat: no-repeat;
-  justify-items: center;
   background-position: center top;
+  justify-items: center;
+  padding-bottom: 4rem;
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 0.78rem;
+  }
 }
 
 main {
@@ -78,10 +84,21 @@ header .input-content {
   padding-inline: 1.25rem;
   gap: 1.25rem;
 }
+@media (max-width: 768px) {
+  header .input-content {
+    gap: 0.8rem;
+  }
+}
 header .input-content .checkbox-container {
   width: 1.625rem;
   height: 1.625rem;
   flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  header .input-content .checkbox-container {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 header .input-content .checkbox-container .first-checkbox {
   -webkit-appearance: none;
@@ -100,8 +117,12 @@ header .input-content #text-input {
   width: 100%;
   color: var(--text-color);
   font-family: var(--font-family);
-  font-size: 1.125rem;
   background-color: transparent;
+}
+@media (max-width: 768px) {
+  header .input-content #text-input {
+    font-size: 0.78rem;
+  }
 }
 header .input-content #text-input::-moz-placeholder {
   color: var(--placeholder-color);
@@ -112,6 +133,14 @@ header .input-content #text-input::placeholder {
   color: var(--placeholder-color);
   font-family: var(--font-family);
   font-size: 1.125rem;
+}
+@media (max-width: 768px) {
+  header .input-content #text-input::-moz-placeholder {
+    font-size: 0.78rem;
+  }
+  header .input-content #text-input::placeholder {
+    font-size: 0.78rem;
+  }
 }
 
 .wrapper {
@@ -148,6 +177,11 @@ header .input-content #text-input::placeholder {
   gap: 1.25rem;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+  #todos-container .todo-container .todo-item {
+    gap: 0.8rem;
+  }
+}
 #todos-container .todo-container .todo-item p {
   color: var(--text-color);
 }
@@ -158,10 +192,16 @@ header .input-content #text-input::placeholder {
   border-radius: 50%;
   border: 0.125rem solid var(--border-color);
   position: relative;
-  width: 26px;
-  height: 26px;
+  width: 1.625rem;
+  height: 1.625rem;
   cursor: pointer;
   flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  #todos-container .todo-container .todo-item .checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 #todos-container .todo-container .todo-item .checkbox:checked {
   background: var(--check-background);
@@ -204,6 +244,13 @@ header .input-content #text-input::placeholder {
   opacity: 0;
   transform: scale(0.6);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+#todos-container .todo-container.dragging {
+  opacity: 1;
+  cursor: grabbing;
+}
+#todos-container .todo-container.ghost {
+  opacity: 0;
 }
 #todos-container .hide-todo {
   display: none;
@@ -251,4 +298,9 @@ header .input-content #text-input::placeholder {
 
 .hide {
   display: none;
+}
+
+.last-item {
+  font-weight: 400;
+  color: var(--text-color);
 }/*# sourceMappingURL=style.css.map */

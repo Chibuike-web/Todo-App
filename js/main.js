@@ -1,6 +1,7 @@
 import "./active.js";
 import "./completed.js";
 import "./all.js";
+import "./draggable.js";
 // Cached DOM elements
 const textInput = document.getElementById("text-input");
 const todosContainer = document.getElementById("todos-container");
@@ -61,7 +62,7 @@ function attachCheckEvent(checkbox) {
         if (checkbox.checked) {
             todoItem?.classList.add("checked");
             if (cancelBtn) {
-                cancelBtn.onclick = (e) => {
+                cancelBtn.addEventListener("click", (e) => {
                     e.preventDefault();
                     // Only remove if the checkbox is still checked
                     if (!checkbox.checked)
@@ -72,7 +73,7 @@ function attachCheckEvent(checkbox) {
                     if (todosContainer.children.length === 0 && bottomDiv) {
                         bottomDiv.classList.add("hide");
                     }
-                };
+                });
             }
         }
         else {
@@ -93,7 +94,7 @@ filteredBtns?.forEach((filteredBtn) => {
     });
 });
 // Handle adding a new todo item when Enter is pressed.
-textInput.onkeydown = (e) => {
+textInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && textInput.value) {
         todoCount++;
         // Create elements for the new todo
@@ -123,7 +124,7 @@ textInput.onkeydown = (e) => {
         // Update todo count display
         updateTodoCount();
     }
-};
+});
 clearCompletedBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     const todos = document.querySelectorAll(".todo-container");
@@ -170,7 +171,6 @@ function toggleTheme() {
     }
     localStorage.setItem("darkTheme", darkTheme ? "enabled" : "disabled");
 }
-// Apply theme on page load
 if (darkTheme) {
     document.body.classList.add("dark-theme");
     if (themeToggler) {
@@ -182,5 +182,4 @@ else {
         themeToggler.innerHTML = iconMoon;
     }
 }
-// Add click event listener to theme toggler
 themeToggler?.addEventListener("click", toggleTheme);

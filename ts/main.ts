@@ -1,6 +1,7 @@
 import "./active.js";
 import "./completed.js";
 import "./all.js";
+import "./draggable.js";
 
 // Cached DOM elements
 const textInput = document.getElementById("text-input") as HTMLInputElement;
@@ -69,20 +70,17 @@ function attachCheckEvent(checkbox: HTMLInputElement): void {
 			todoItem?.classList.add("checked");
 
 			if (cancelBtn) {
-				(cancelBtn as HTMLButtonElement).onclick = (e: MouseEvent) => {
+				cancelBtn.addEventListener("click", (e: Event) => {
 					e.preventDefault();
-
 					// Only remove if the checkbox is still checked
 					if (!checkbox.checked) return;
-
 					todoContainer?.remove();
 					updateTodoCount();
-
 					// Hide bottom row if no todos remain
 					if (todosContainer.children.length === 0 && bottomDiv) {
 						bottomDiv.classList.add("hide");
 					}
-				};
+				});
 			}
 		} else {
 			todoItem?.classList.remove("checked");
@@ -105,7 +103,7 @@ filteredBtns?.forEach((filteredBtn) => {
 });
 
 // Handle adding a new todo item when Enter is pressed.
-textInput.onkeydown = (e: KeyboardEvent): void => {
+textInput.addEventListener("keydown", (e: KeyboardEvent): void => {
 	if (e.key === "Enter" && textInput.value) {
 		todoCount++;
 
@@ -145,7 +143,7 @@ textInput.onkeydown = (e: KeyboardEvent): void => {
 		// Update todo count display
 		updateTodoCount();
 	}
-};
+});
 
 clearCompletedBtn?.addEventListener("click", (e) => {
 	e.preventDefault();
@@ -198,7 +196,6 @@ function toggleTheme() {
 	localStorage.setItem("darkTheme", darkTheme ? "enabled" : "disabled");
 }
 
-// Apply theme on page load
 if (darkTheme) {
 	document.body.classList.add("dark-theme");
 	if (themeToggler) {
@@ -209,6 +206,4 @@ if (darkTheme) {
 		themeToggler.innerHTML = iconMoon;
 	}
 }
-
-// Add click event listener to theme toggler
 themeToggler?.addEventListener("click", toggleTheme);

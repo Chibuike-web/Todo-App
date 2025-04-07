@@ -15,11 +15,16 @@ body {
 	font-family: var(--font-family);
 	font-weight: var(--body-weight);
 	background-color: var(--background);
-	height: 100vh;
+	min-height: 100vh;
 	background-image: var(--bg-image);
 	background-repeat: no-repeat;
-	justify-items: center;
 	background-position: center top;
+	justify-items: center;
+	padding-bottom: 4rem;
+
+	@media (max-width: 768px) {
+		font-size: 0.78rem;
+	}
 }
 
 main {
@@ -52,10 +57,19 @@ header {
 		padding-inline: 1.25rem;
 		gap: 1.25rem;
 
+		@media (max-width: 768px) {
+			gap: 0.8rem;
+		}
+
 		.checkbox-container {
 			width: 1.625rem;
 			height: 1.625rem;
 			flex-shrink: 0;
+
+			@media (max-width: 768px) {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
 
 			.first-checkbox {
 				-webkit-appearance: none;
@@ -75,14 +89,20 @@ header {
 			width: 100%;
 			color: var(--text-color);
 			font-family: var(--font-family);
-			font-size: 1.125rem;
 			background-color: transparent;
+
+			@media (max-width: 768px) {
+				font-size: 0.78rem;
+			}
 		}
 
 		#text-input::placeholder {
 			color: var(--placeholder-color);
 			font-family: var(--font-family);
 			font-size: 1.125rem;
+			@media (max-width: 768px) {
+				font-size: 0.78rem;
+			}
 		}
 	}
 }
@@ -121,6 +141,10 @@ header {
 			gap: 1.25rem;
 			cursor: pointer;
 
+			@media (max-width: 768px) {
+				gap: 0.8rem;
+			}
+
 			p {
 				color: var(--text-color);
 			}
@@ -131,10 +155,15 @@ header {
 				border-radius: 50%;
 				border: 0.125rem solid var(--border-color);
 				position: relative;
-				width: 26px;
-				height: 26px;
+				width: 1.625rem;
+				height: 1.625rem;
 				cursor: pointer;
 				flex-shrink: 0;
+
+				@media (max-width: 768px) {
+					width: 1.5rem;
+					height: 1.5rem;
+				}
 
 				&:checked {
 					background: var(--check-background);
@@ -188,7 +217,17 @@ header {
 			transform: scale(0.6);
 			transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 		}
+
+		&.dragging {
+			opacity: 1;
+			cursor: grabbing;
+		}
+
+		&.ghost {
+			opacity: 0;
+		}
 	}
+
 	.hide-todo {
 		display: none;
 	}
@@ -241,4 +280,9 @@ header {
 
 .hide {
 	display: none;
+}
+
+.last-item {
+	font-weight: 400;
+	color: var(--text-color);
 }
